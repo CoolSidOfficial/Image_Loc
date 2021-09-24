@@ -4,19 +4,19 @@ from dotenv import load_dotenv
 from os import getenv
 import logging
 from pyrogram.types import ReplyKeyboardMarkup
-###########################################################
+#############################################################################################################
 
 load_dotenv()
 logging.basicConfig(filename="image_loc.log",level=logging.INFO,format="%(asctime)s-%(message)s",datefmt="%H-%M-%S  %d-%A-%Y")
-######################################################
+############################################################################################################################
 api_id=getenv("API_ID")
 api_hash=getenv("API_HASH")
 bot_token=getenv("BOT_API")
 app=Client("Image Loc",api_id,api_hash,bot_token)
-path="/home/coolsid/desktop/python/image_loc/"
-gif_path="/home/coolsid/Codes/others/pyrogram_codes/image_loc/video.mp4"
+path=r"D:\python\Image_Loc\User-data"   # change this path 
+gif_path=r"D:\python\Image_Loc\video.mp4"
 delete_gps=False
-########################################################################################################################
+#######################################################################################################################################################################################################################
 @app.on_message(filters.command(["start"]))
 def start(client,message):
     user=message.from_user.id
@@ -24,13 +24,12 @@ def start(client,message):
     logging.info(f"Start command  has been called by this {user} ")
     message.reply_text("**Please upload your image as a file to know the location of it ** ")
 
-######################################################################################
+###################################################################################################################################
 @app.on_message(filters.photo)
 def check(client,message):
     message.reply_text("**Upload by clicking on files not as image ")
     message.reply_animation(gif_path)
-    message.reply_text("Or type help to watch in good quality")
-###################################################################
+###################################################################################################################################
 @app.on_message(filters.document)
 def get_image(client,message):
     global new_path,photo_from
@@ -40,7 +39,6 @@ def get_image(client,message):
     if image_path is None:
         print("image not downloaded successfully")
     if not  delete_gps:
-
          extract_meta(message.from_user.id)
 
 ############################################################################
@@ -73,12 +71,12 @@ def keyboard(id):
 
      [["Convert Another"],["Delete Gps Data"]]
      ,resize_keyboard=True,one_time_keyboard=True))
-##############################################################################################
+#################################3#################################################################################
 @app.on_message(filters.regex("Convert Another"))
 def again(client,message):
     message.reply_text(text="** Please upload your image as a file **")
 
-###############################################################################################
+###############################################################################################################
 @app.on_message(filters.regex("Delete Gps Data"))
 def remove(client,message):
     global delete_gps
@@ -91,10 +89,11 @@ def remove(client,message):
 
     elif  photo_from != message.from_user.id:
            message.reply_text(text="**Please type /start and send image again*** ")
-@app.on_message(filters.command(["help"]))
-def help(client,message):
-     pass
+##########################################################################################################################################################################
 @app.on_message(filters.command(["admin"]))
 def admin(client,message):
-    pass
+    message.reply_text("This the admin profile ")
+    message.reply_text("@bot_mechanic")
+
 app.run()
+#Created by Coolsid on 20 september 2021
