@@ -93,7 +93,7 @@ def remove(client,message):
 ##########################################################################################################################################################################
 @app.on_message(filters.command(["admin"]))
 def admin(client,message):
-    message.reply_text("This the admin profile ")
+    message.reply_text("** This  is the admin profile\n If you got any feedback feel free to message him** ")
     message.reply_text("@bot_mechanic")
 
 app.run()
