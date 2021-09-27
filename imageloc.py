@@ -3,6 +3,7 @@ from exif import Image
 from dotenv import load_dotenv
 from os import getenv
 import logging
+import tgcrypto
 from pyrogram.types import ReplyKeyboardMarkup
 #############################################################################################################
 
