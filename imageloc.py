@@ -14,8 +14,8 @@ api_id=getenv("API_ID")
 api_hash=getenv("API_HASH")
 bot_token=getenv("BOT_API")
 app=Client("Image Loc",api_id,api_hash,bot_token)
-path=r"D:\python\Image_Loc\User-data"   # change this path 
-gif_path=r"D:\python\Image_Loc\video.mp4"
+path=r"User-data"   # change this path 
+gif_path=r"video.mp4"
 delete_gps=False
 #######################################################################################################################################################################################################################
 @app.on_message(filters.command(["start"]))
